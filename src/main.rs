@@ -115,7 +115,7 @@ fn resolve_collision(a: &mut Rect, vel: &mut (f32,f32), b: &Rect) -> bool {
     true
 }
 
-
+#[allow(dead_code)]
 struct Block {
     rect: Rect,
     col: Color,
@@ -168,7 +168,7 @@ fn walls(bl:&mut Ball) {
 
 #[macroquad::main("breakout")]
 async fn main() {
-    let font = load_ttf_font("src/rs/Cairo-Regular.ttf").await.unwrap();
+    let font = load_ttf_font("rs/Cairo-Regular.ttf").await.unwrap();
     let mut tom: Player = Player::new();
     let mut family:Vec<Block> = init_blocks();
     let mut bl = Ball::new(400f32,400f32);
@@ -265,3 +265,25 @@ async fn main() {
     }
 }
 
+#[cfg(test)]
+mod tests {
+
+    use super::*;
+
+    #[test]
+    fn test1() {
+        let t = Ball::new(400f32,400f32);
+
+        assert_eq!(t.c,WHITE);
+        assert_eq!(t.vec,(-1f32,1f32));
+    }
+
+    #[test]
+    fn test2() {
+        let q = Player::new();
+
+        assert_eq!(q.lives,3);
+        assert_eq!(q.c,YELLOW);
+    }
+
+}
