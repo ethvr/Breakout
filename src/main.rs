@@ -168,7 +168,7 @@ fn walls(bl:&mut Ball) {
 
 #[macroquad::main("breakout")]
 async fn main() {
-    let font = load_ttf_font("rs/Cairo-Regular.ttf").await.unwrap();
+    let font = load_ttf_font("src/rs/Cairo-Regular.ttf").await.unwrap();
     let mut tom: Player = Player::new();
     let mut family:Vec<Block> = init_blocks();
     let mut bl = Ball::new(400f32,400f32);
